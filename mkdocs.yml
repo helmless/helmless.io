@@ -8,7 +8,7 @@ nav:
   - Google CloudRun: '!import https://github.com/serverless-helm/cloudrun?edit_uri=/blob/main/&docs_dir=docs/*&branch=main&config=mkdocs.yaml'
 theme:
   name: material
-  custom_dir: theme_overrides/
+  # custom_dir: theme_overrides/
   icon:
     repo: fontawesome/brands/github
   features:
