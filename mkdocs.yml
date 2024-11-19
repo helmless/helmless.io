@@ -1,40 +1,51 @@
 site_name: Serverless Helm
 site_description: Deploy Serverless applications to Google Cloud Run with Helm bypassing the overhead of Kubernetes and Terraform.
-site_url: https://serverless-helm.github.io/cloudrun
-repo_url: https://github.com/serverless-helm/cloudrun
-repo_name: serverless-helm
+site_url: https://helmless.io
+repo_url: https://github.com/helmless/helmless.io
 edit_uri: edit/main/docs/
 nav:
   - Home: index.md
-  - Getting Started: getting-started.md
-  - Google Cloud Run:
-      - cloudrun/index.md
-      - Getting Started: cloudrun/getting-started.md
+  - Google CloudRun: '!import https://github.com/serverless-helm/cloudrun?edit_uri=/blob/main/&docs_dir=docs/*&branch=main&config=mkdocs.yaml'
 theme:
   name: material
   custom_dir: theme_overrides/
   icon:
     repo: fontawesome/brands/github
   features:
-    - navigation.tabs
-    - navigation.instant
-    - navigation.instant.progress
-    - navigation.tracking
-    - navigation.sections
-    - navigation.prune
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    # - content.code.select
+    - content.footnote.tooltips
+    - content.tabs.link
+    - content.tooltips
+    # - header.autohide
+    # - navigation.expand
+    - navigation.footer
     - navigation.indexes
-    - toc.follow
+    - navigation.instant
+    # - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    # - navigation.tabs.sticky
     - navigation.top
-    - search.suggest
+    - navigation.tracking
     - search.highlight
     - search.share
-    - header.autohide
-    - navigation.footer
-    - content.action.edit
-    - content.tabs.link
+    - search.suggest
+    - toc.follow
+    # - toc.integrate
 plugins:
   - privacy
   - search
+  - minify:
+      minify_html: true
+  - multirepo:
+      cleanup: true
 extra:
   consent:
     title: Cookie consent
@@ -81,7 +92,10 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.mark
@@ -93,6 +107,9 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde

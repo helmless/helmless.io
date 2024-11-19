@@ -64,3 +64,5 @@ charts/*/requirements.lock
 charts/*/Chart.lock
 
 .cache/
+
+temp_dir/

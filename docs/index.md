@@ -33,4 +33,4 @@ Getting Started
 
 Helmless makes serverless deployments effortless. Start your journey with one of these guides:
 
-- [Deploy Your First Google Cloud Run Service using Helmless](./cloudrun/getting-started.md)
+- [Deploy Your First Google Cloud Run Service using Helmless](./google-cloudrun/getting-started.md)
