@@ -1,11 +1,18 @@
-site_name: Serverless Helm
+site_name: Helmless
 site_description: Deploy Serverless applications to Google Cloud Run with Helm bypassing the overhead of Kubernetes and Terraform.
 site_url: https://helmless.io
-repo_url: https://github.com/helmless/helmless.io
+repo_url: https://github.com/helmless/helmless
 edit_uri: edit/main/docs/
 nav:
   - Home: index.md
-  - Google CloudRun: '!import https://github.com/serverless-helm/cloudrun?edit_uri=/blob/main/&docs_dir=docs/*&branch=main&config=mkdocs.yaml'
+  - What is Helmless?: what-is-helmless.md
+  - Architecture Overview: architecture.md
+  - Google CloudRun:
+      - cloudrun/index.md
+      - Getting Started: cloudrun/getting-started.md
+      - CI/CD: cloudrun/ci-cd.md
+      - Examples: cloudrun/examples.md
+      - Helmless Chart: https://github.com/helmless/google-cloudrun-chart
 theme:
   name: material
   # custom_dir: theme_overrides/
