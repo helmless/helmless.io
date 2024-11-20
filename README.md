@@ -1,6 +1,6 @@
 # helmless.io
 
-[![📜 Docs](https://github.com/helmless/helmless/actions/workflows/deploy-docs.yaml/badge.svg)](https://github.com/helmless/helmless/actions/workflows/deploy-docs.yaml)
+[![📜 Docs](https://github.com/helmless/helmless/actions/workflows/deploy-docs.yaml/badge.svg)](https://helmless.io)
 [![CloudRun Chart GitHub Release](https://img.shields.io/github/v/release/helmless/google-cloudrun-chart?include_prereleases&label=cloudrun&color=blue)](https://github.com/helmless/google-cloudrun-chart/)
 ![GitHub Org's stars](https://img.shields.io/github/stars/helmless)
 
