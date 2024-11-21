@@ -18,6 +18,10 @@ body {
   min-height: 200vh;
 }
 
+.md-main {
+    background: var(--space-blue);
+}
+
 .gradient-text {
     background: linear-gradient(135deg, #64B5F6 0%, #E1F5FE 100%);
     -webkit-background-clip: text;
@@ -357,3 +361,248 @@ body {
 .feature-content.animate .feature-card:nth-child(2) { transition-delay: 0.4s; }
 .feature-content.animate .feature-card:nth-child(3) { transition-delay: 0.5s; }
 .feature-content.animate .feature-card:nth-child(4) { transition-delay: 0.6s; }
+
+/* Workflow section */
+.workflow-container {
+  background: var(--space-blue);
+  width: 100%;
+  padding: 6rem 2rem;
+  margin-top: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.workflow-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent
+  );
+}
+
+.workflow-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.workflow-heading {
+  text-align: center;
+  font-size: 2.8em;
+  line-height: 1.1;
+  margin-bottom: 4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cloud-white);
+}
+
+.workflow-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.workflow-step {
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  max-width: 250px;
+}
+
+.workflow-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.workflow-icon img {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.workflow-step:hover .workflow-icon {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.workflow-step h3 {
+  color: var(--cloud-white);
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.workflow-step p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.workflow-arrow {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .workflow-steps {
+    flex-direction: column;
+  }
+  
+  .workflow-arrow {
+    transform: rotate(90deg);
+    margin: 1rem 0;
+  }
+  
+  .workflow-step {
+    max-width: 100%;
+  }
+}
+
+/* Final CTA section */
+.final-cta-container {
+  padding: 8rem 2rem;
+  background: var(--space-blue);
+}
+
+.final-cta-content {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.final-cta-heading {
+  font-size: 3em;
+  line-height: 1.1;
+  margin-bottom: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cloud-white);
+}
+
+.final-cta-heading .gradient-text {
+  color: #4B9FE6;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+}
+
+.proof-points {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.proof-point {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.proof-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4B9FE6;
+  margin-bottom: 0.5rem;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+}
+
+.proof-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+}
+
+.final-cta-buttons {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.final-cta-buttons .md-button {
+  padding: 0.8rem 2rem;
+}
+
+/* Primary button (Start Deploying Now) */
+.final-cta-buttons .md-button--primary {
+  background: linear-gradient(135deg, #64B5F6 0%, #E1F5FE 100%);
+  color: var(--space-blue);
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.final-cta-buttons .md-button--primary:hover {
+  color: var(--cloud-white);
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #4B9FE6 0%, #64B5F6 100%);
+}
+
+/* Secondary button (GitHub) */
+.final-cta-buttons .md-button--secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--cloud-white);
+  transition: all 0.3s ease;
+}
+
+.final-cta-buttons .md-button--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--cloud-white);
+}
+
+.github-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.5rem;
+  opacity: 0.9;
+  filter: brightness(0) invert(1); /* Makes the GitHub icon white */
+}
+
+.github-icon svg {
+  fill: currentColor;
+}
+
+@media (max-width: 768px) {
+  .final-cta-container {
+    padding: 4rem 1rem;
+  }
+
+  .final-cta-heading {
+    font-size: 2.2em;
+  }
+
+  .proof-points {
+    gap: 2rem;
+  }
+
+  .proof-number {
+    font-size: 2rem;
+  }
+}

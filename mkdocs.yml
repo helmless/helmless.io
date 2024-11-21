@@ -9,13 +9,13 @@ nav:
       - about/index.md
       - Architecture: about/architecture.md
   - Documentation:
-      - docs/index.md
+      - index.md
       - What is Helmless?: about/index.md
       - Architecture: about/architecture.md
       - Google CloudRun:
-          - Getting Started: docs/cloudrun/getting-started.md
-          - CI/CD: docs/cloudrun/ci-cd.md
-          - Examples: docs/cloudrun/examples.md
+          - Getting Started: cloudrun/getting-started.md
+          - CI/CD: cloudrun/ci-cd.md
+          - Examples: cloudrun/examples.md
 theme:
   name: material
   custom_dir: overrides/
