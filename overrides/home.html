@@ -38,33 +38,38 @@
       </div>
     </div>
   </div>
-</section>
 
-<!-- Peek container -->
-<div class="peek-container">
-  <div class="peek-image">
-    <img
-      src="{{ 'assets/images/values_example.svg' | url }}"
-      alt="Helm Values Example"
-    />
+  <!-- Move peek container inside tx-container -->
+  <div class="peek-container">
+    <div class="peek-image">
+      <img
+        src="{{ 'assets/images/values_example.svg' | url }}"
+        alt="Helm Values Example"
+      />
+    </div>
   </div>
-</div>
+</section>
 
 <!-- Simplified feature section -->
 <section class="feature-container">
-  <div class="feature-grid">
-    <div class="feature-content">
-      <h2>Simplified Deployments</h2>
-      <p>
-        Deploy serverless workloads using familiar Helm syntax instead of
-        verbose Terraform configurations:
-      </p>
-      <ul>
-        <li>✨ Intuitive templating with built-in functions</li>
-        <li>🔄 Easy environment overrides with values files</li>
-        <li>📦 Reusable charts for consistent deployments</li>
-        <li>⚡ Faster deployment cycles with minimal config</li>
-      </ul>
+  <div class="md-grid md-typeset">
+    <div class="feature-grid">
+      <h2 class="feature-heading">
+        <span class="gradient-text">Simplified Deployments</span>
+      </h2>
+      <!-- Left side: Feature content -->
+      <div class="feature-content">
+        <p>
+          Deploy serverless workloads using familiar Helm syntax instead of
+          verbose Terraform configurations:
+        </p>
+        <ul>
+          <li>✨ Intuitive templating with built-in functions</li>
+          <li>🔄 Easy environment overrides with values files</li>
+          <li>📦 Reusable charts for consistent deployments</li>
+          <li>⚡ Faster deployment cycles with minimal config</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>

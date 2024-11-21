@@ -1,15 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const peekContainer = document.querySelector('.peek-container');
   const featureContent = document.querySelector('.feature-content');
   
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const vh = window.innerHeight;
-    
-    // When scrolled to feature section
-    if (scrolled > vh * 0.5) {
-      peekContainer.classList.add('scrolled');
-      featureContent.classList.add('animate');
-    }
+  // Create intersection observer for feature content
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        // Once animation is triggered, stop observing
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.3, // Trigger when 30% of the element is visible
+    rootMargin: '-100px' // Adjust when the animation triggers
   });
+
+  // Start observing the feature content
+  observer.observe(featureContent);
 });
