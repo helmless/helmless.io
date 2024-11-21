@@ -1,0 +1,78 @@
+{% extends "main.html" %}
+
+<!-- Custom front matter -->
+{% block extrahead %}
+<link rel="stylesheet" href="{{ 'assets/stylesheets/home.css' | url }}" />
+<script src="{{ 'assets/javascripts/home.js' | url }}"></script>
+{% endblock %}
+
+<!-- Render hero under tabs -->
+{% block tabs %} {{ super() }}
+
+<!-- Hero section with dynamic text -->
+<section class="tx-container">
+  <div class="md-grid md-typeset">
+    <div class="tx-hero">
+      <div class="tx-hero__content">
+        <h1>
+          Fast and simple<br />
+          <span class="gradient-text">serverless deployments</span><br />
+          using Helm<br />
+          without Kubernetes
+        </h1>
+        <p>
+          Deploy serverless containers with Helm's simplicity,<br />
+          bypassing the overhead of Kubernetes and Terraform.
+        </p>
+        <div class="tx-hero__buttons">
+          <a
+            href="{{ page.next_page.url | url }}"
+            class="md-button md-button--primary"
+          >
+            Get started with Helmless
+          </a>
+          <a href="./what-is-helmless/" class="md-button md-button--secondary">
+            Learn more
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Peek container -->
+<div class="peek-container">
+  <div class="peek-image">
+    <img
+      src="{{ 'assets/images/values_example.svg' | url }}"
+      alt="Helm Values Example"
+    />
+  </div>
+</div>
+
+<!-- Simplified feature section -->
+<section class="feature-container">
+  <div class="feature-grid">
+    <div class="feature-content">
+      <h2>Simplified Deployments</h2>
+      <p>
+        Deploy serverless workloads using familiar Helm syntax instead of
+        verbose Terraform configurations:
+      </p>
+      <ul>
+        <li>✨ Intuitive templating with built-in functions</li>
+        <li>🔄 Easy environment overrides with values files</li>
+        <li>📦 Reusable charts for consistent deployments</li>
+        <li>⚡ Faster deployment cycles with minimal config</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+<!-- Content -->
+{% block content %}{% endblock %}
+
+<!-- Footer -->
+{% block footer %}{{ super() }}{% endblock %}

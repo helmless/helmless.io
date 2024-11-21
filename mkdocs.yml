@@ -1,23 +1,31 @@
 site_name: Helmless
-site_description: Deploy Serverless applications to Google Cloud Run with Helm bypassing the overhead of Kubernetes and Terraform.
+site_description: Deploy containers to Google Cloud Run with Helm's, avoiding the complexity of Kubernetes and Terraform.
 site_url: https://helmless.io
 repo_url: https://github.com/helmless/helmless
 edit_uri: edit/main/docs/
 nav:
   - Home: index.md
-  - What is Helmless?: what-is-helmless.md
-  - Architecture Overview: architecture.md
-  - Google CloudRun:
-      - cloudrun/index.md
-      - Getting Started: cloudrun/getting-started.md
-      - CI/CD: cloudrun/ci-cd.md
-      - Examples: cloudrun/examples.md
-      - Helmless Chart: https://github.com/helmless/google-cloudrun-chart
+  - What is Helmless?:
+      - about/index.md
+      - Architecture: about/architecture.md
+  - Documentation:
+      - docs/index.md
+      - What is Helmless?: about/index.md
+      - Architecture: about/architecture.md
+      - Google CloudRun:
+          - Getting Started: docs/cloudrun/getting-started.md
+          - CI/CD: docs/cloudrun/ci-cd.md
+          - Examples: docs/cloudrun/examples.md
 theme:
   name: material
-  # custom_dir: theme_overrides/
+  custom_dir: overrides/
+  palette:
+    scheme: slate
+    primary: custom
+    accent: light blue
   icon:
-    repo: fontawesome/brands/github
+    logo: material/rocket-launch
+    repo: material/github
   features:
     - announce.dismiss
     - content.action.edit
@@ -54,6 +62,7 @@ plugins:
   - multirepo:
       cleanup: true
 extra:
+  generator: false
   consent:
     title: Cookie consent
     description: >-
@@ -78,6 +87,13 @@ extra:
           note: >-
             Thanks for your feedback! Help us improve this page by
             using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+  font:
+    text:
+      - family: Inter
+      - url: https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap
+    code:
+      - family: JetBrains Mono
+      - url: https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap
 markdown_extensions:
   # Python Markdown
   - abbr
@@ -120,3 +136,5 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+extra_css:
+  - assets/stylesheets/extra.css

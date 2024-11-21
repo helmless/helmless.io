@@ -34,7 +34,7 @@ env:
 - `env` is an optional set of environment variables to pass to the service
 
 !!! info "Full Chart Specification"
-You can find the full chart specification and all supported configuration options [on GitHub][chart].
+    You can find the full chart specification and all supported configuration options [on GitHub][chart].
 
 ## Deploying the Service
 
@@ -56,61 +56,61 @@ helm template oci://ghcr.io/helmless/cloudrun -f config/values.yaml --output-dir
 You should now have a `out/cloudrun/templates/cloudrun.yaml` file that looks like this:
 
 ??? example "View the complete YAML output"
-`YAML
+    ```yaml
     ---
     # Source: cloudrun/templates/cloudrun.yaml
     apiVersion: serving.knative.dev/v1
     kind: Service
     metadata:
-      name: tutorial-service
-      labels:
-      annotations:
-        run.googleapis.com/launch-stage: GA
-        run.googleapis.com/ingress: all
-        run.googleapis.com/region: europe-west1
-    spec:
-      template:
-        metadata:
-          annotations:
-            run.googleapis.com/execution-environment: gen2
-            run.googleapis.com/cpu-throttling: "true"
-            autoscaling.knative.dev/maxScale: "100"
-        spec:
-          containerConcurrency: 80
-          timeoutSeconds: 300
-          containers:
-            - image: us-docker.pkg.dev/cloudrun/container/hello
-              env:
-                - name: "COLOR"
-                  value: "blue"
-              resources:
-                limits:
-                  cpu: "1"
-                  memory: "512Mi"
-              ports:
-                - containerPort: 8080
-              livenessProbe:
-                failureThreshold: null
-                httpGet:
-                  path: /
-                  port: 8080
-                initialDelaySeconds: null
-                periodSeconds: null
-              readinessProbe:
-                failureThreshold: null
-                httpGet:
-                  path: /
-                  port: 8080
-                initialDelaySeconds: null
-                periodSeconds: null
-              startupProbe:
-                failureThreshold: null
-                httpGet:
-                  path: /
-                  port: 8080
-                initialDelaySeconds: null
-                periodSeconds: null
-    `
+        name: tutorial-service
+        labels:
+        annotations:
+          run.googleapis.com/launch-stage: GA
+          run.googleapis.com/ingress: all
+          run.googleapis.com/region: europe-west1
+      spec:
+        template:
+          metadata:
+            annotations:
+              run.googleapis.com/execution-environment: gen2
+              run.googleapis.com/cpu-throttling: "true"
+              autoscaling.knative.dev/maxScale: "100"
+          spec:
+            containerConcurrency: 80
+            timeoutSeconds: 300
+            containers:
+              - image: us-docker.pkg.dev/cloudrun/container/hello
+                env:
+                  - name: "COLOR"
+                    value: "blue"
+                resources:
+                  limits:
+                    cpu: "1"
+                    memory: "512Mi"
+                ports:
+                  - containerPort: 8080
+                livenessProbe:
+                  failureThreshold: null
+                  httpGet:
+                    path: /
+                    port: 8080
+                  initialDelaySeconds: null
+                  periodSeconds: null
+                readinessProbe:
+                  failureThreshold: null
+                  httpGet:
+                    path: /
+                    port: 8080
+                  initialDelaySeconds: null
+                  periodSeconds: null
+                startupProbe:
+                  failureThreshold: null
+                  httpGet:
+                    path: /
+                    port: 8080
+                  initialDelaySeconds: null
+                  periodSeconds: null
+    ```
 
 ### Deploying the Service
 
@@ -151,7 +151,7 @@ gcloud run services proxy tutorial-service
 ```
 
 !!! success "Tada! 🥳"
-You can now see your Cloud Run service in action when navigating to [`http://localhost:8080`](http://localhost:8080).
+    You can now see your Cloud Run service in action when navigating to [`http://localhost:8080`](http://localhost:8080).
 
 ### Cleaning up
 
