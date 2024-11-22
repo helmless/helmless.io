@@ -25,6 +25,8 @@ plugins:
       redirect_maps:
         'docs/cloudrun/index.md': 'docs/cloudrun/getting-started.md'
         'cloudrun/index.md': 'docs/cloudrun/getting-started.md'
+        'cloudrun/getting-started/index.md': 'docs/cloudrun/getting-started.md'
+        'getting-started/index.md': 'docs/cloudrun/getting-started.md'
 theme:
   name: material
   custom_dir: overrides/
