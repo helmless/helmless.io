@@ -105,10 +105,10 @@ Ready to try Helmless? Follow these steps:
 3. **Configure your repository** - Add GitHub Actions workflows
 4. **Deploy your first application** - Follow our quickstart guide
 
-For detailed instructions, check out our [Google Cloud Run Guide](./cloudrun/index.md).
+For detailed instructions, check out our [Google Cloud Run Guide](./docs/cloudrun/index.md).
 
 ## Next Steps
 
 - Learn about the [Architecture](./architecture.md)
-- Explore [Example Deployments](./cloudrun/examples.md)
+- Explore [Example Deployments](./docs/cloudrun/examples.md)
 - Join our [Community](https://github.com/helmless/helmless/discussions)

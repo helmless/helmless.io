@@ -1,27 +1,19 @@
+---
+title: What is Helmless?
+description: Learn the core concepts and understand how Helmless simplifies serverless deployments.
 
-# Helmless.io
+---
 
-!!! tip inline end "Star it on [GitHub](https://github.com/helmless/helmless) 🌟"
-    Give it a [⭐️](https://github.com/helmless/helmless) if you like the project and want to see it grow!
+# What is Helmless?
 
-## The Problem
+Helmless is a workflow and collection of resources that allows you to deploy serverless containers to Google Cloud Run, and potentially other platforms (1), with Helm, bypassing the complexity of Kubernetes and Terraform.
+{ .annotate }
 
-Deploying containerized applications to serverless platforms should be simple. Yet, today's solutions force you to choose between:
+1.   :material-information-slab-circle: See the [extending to other platforms](./architecture.md#extending-to-other-platforms) page for more information.
 
-- Complex Kubernetes clusters with high operational overhead
-- Verbose Terraform configurations that are hard to maintain and slow to deploy
-- Platform-specific deployment tools that lock you in
+It takes a container specification in the form of a Helm chart and a values file, and uses the templating feature of Helm to generate a Cloud Run configuration. This configuration is then deployed using the Cloud Run CLI.
 
-## The Solution
-
-Helmless brings the familiar Helm experience to serverless deployments. It lets you:
-
-- **Deploy faster** - Go straight from container to cloud, bypassing Kubernetes complexity
-- **Stay productive** - Use the Helm charts and GitOps workflows you already know
-- **Maintain control** - Keep infrastructure as code without the Terraform overhead
-- **Remain flexible** - Switch between cloud providers without rewriting deployments
-
-## Why Helmless?
+--8<-- "docs/_partials/architectur-diagram.md"
 
 Helmless gives you a powerful serverless deployment workflow that is:
 
@@ -33,43 +25,30 @@ Helmless gives you a powerful serverless deployment workflow that is:
 
 ## Getting Started
 
-<div class="grid cards" markdown>
+--8<-- "docs/_partials/getting-started_grid.md"
 
--   :material-book-open-page-variant:{ .lg .middle } __What is Helmless?__
+## Why Helm?
 
-    ---
+Helm is a great tool for managing containerized applications, and its templating feature offers a great developer experience. It allows you to define your application container specification in a very simple YAML file and gives the platform teams an easy way to add abstraction and customization on top of it, making container-based deployments a breeze.
 
-    Learn the core concepts and understand how Helmless simplifies serverless deployments
+```yaml title=".hemless/values.yaml"
+--8<-- "examples/minimal-service/values.yaml"
+```
 
-    [:octicons-arrow-right-24: Learn More](./what-is-helmless.md)
+## Why **no** Kubernetes?
 
--   :material-cog-outline:{ .lg .middle } __How does it work?__
+Helm, and for this project its templating feature, offers a great developer experience for managing containerized applications. However by default Helm is built for Kubernetes, which brings a lot of overhead and complexity for container-based deployments, where often times you don't need the full power of Kubernetes. And small teams and organizations often don't have the resources to maintain a production-grade Kubernetes cluster.
 
-    ---
+Helmless aims to give you the developer experience of Helm, without the overhead of Kubernetes.
 
-    Understand the architecture and technical details behind Helmless
+## Why **no** Terraform?
 
-    [:octicons-arrow-right-24: Architecture](./architecture.md)
+Terraform is a great tool for managing infrastructure as code, but especially for frequent deployments it quickly becomes a bottleneck. Infrastructure changes should be carefully managed and gated, and not be a part of the fast feedback loop that developers expect for deploying their own code as an application container.
 
--   :material-rocket-launch:{ .lg .middle } __Deploy Your First Service__
+This is where Helmless comes in. It decouples the container deployment from the infrastructure deployment, and allows you to use the great developer experience of Helm for application deployments, while leaving the infrastructure management to other tools, like Terraform. By defining the container specification directly inside your application repository and by using the standard CI/CD pipeline, you can frequently deploy your application without waiting for the long approval process of infrastructure changes done in Terraform.
 
-    ---
 
-    Get hands-on experience deploying to Google Cloud Run with Helmless
-
-    [:octicons-arrow-right-24: Get Started](./cloudrun/index.md)
-
--   :material-code-braces:{ .lg .middle } __Examples__
-
-    ---
-
-    Explore real-world examples and sample configurations
-
-    [:octicons-arrow-right-24: View Examples](./cloudrun/examples.md)
-
-</div>
-
-## Contributing
+## Repositories
 
 Helmless is open source and welcomes contributions! The project consists of several focused repositories:
 

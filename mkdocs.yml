@@ -8,12 +8,23 @@ nav:
   - What is Helmless?:
       - what-is-helmless.md
       - Architecture: architecture.md
-  - Getting Started: getting-started.md
-  - Google CloudRun:
-      - cloudrun/index.md
-      - Getting Started: cloudrun/getting-started.md
-      - CI/CD: cloudrun/ci-cd.md
-      - Examples: cloudrun/examples.md
+  - Documentation:
+      # - docs/index.md
+      - Google CloudRun:
+          - docs/cloudrun/getting-started.md
+          - CI/CD: docs/cloudrun/ci-cd.md
+          - Examples: docs/cloudrun/examples.md
+plugins:
+  - privacy
+  - search
+  - minify:
+      minify_html: true
+  - multirepo:
+      cleanup: true
+  - redirects:
+      redirect_maps:
+        'docs/cloudrun/index.md': 'docs/cloudrun/getting-started.md'
+        'cloudrun/index.md': 'docs/cloudrun/getting-started.md'
 theme:
   name: material
   custom_dir: overrides/
@@ -24,6 +35,7 @@ theme:
   icon:
     logo: material/rocket-launch
     repo: material/github
+    annotation: material/chevron-right-circle
   features:
     - announce.dismiss
     - content.action.edit
@@ -52,13 +64,6 @@ theme:
     - search.suggest
     - toc.follow
     # - toc.integrate
-plugins:
-  - privacy
-  - search
-  - minify:
-      minify_html: true
-  - multirepo:
-      cleanup: true
 extra:
   generator: false
   consent:
@@ -121,6 +126,7 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.smartsymbols
+  - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

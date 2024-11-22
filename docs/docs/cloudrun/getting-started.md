@@ -163,9 +163,13 @@ gcloud run services delete tutorial-service
 
 ## Next Steps
 
-From here you can head back to the [overview](../index.md) to learn more about Helmless for Google Cloud Run or jump to the next guide to learn how to [deploy from a CI/CD pipeline](./ci-cd.md) using Github Actions.
+From here you can head back to the [overview](/what-is-helmless) to learn more about Helmless for Google Cloud Run or jump to the next guide to learn how to [deploy from a CI/CD pipeline](ci-cd.md) using Github Actions.
+
+
+--8<-- "docs/_partials/getting-started_grid.md"
+
 
 [^1]: The [Cloud Run YAML specification](https://cloud.google.com/run/docs/reference/yaml/v1) is just a standard [Knative](https://knative.dev/) Service specification under the hood.
 [^2]: The region must be a valid Google Cloud Run region. You can choose a region using the [region picker](https://cloud.withgoogle.com/region-picker/).
 
-[chart]: https://github.com/helmless/cloudrun
+[chart]: https://github.com/helmless/google-cloudrun-chart
