@@ -7,6 +7,83 @@ Helmless provides a [Github Action][github-action] that you can use in your work
 !!! info "Contributing other CI/CD Platforms"
     If you want to extend Helmless to other CI/CD platforms, we kindly ask you to get in touch and contribute to the project.
 
+## Prerequisites
+
+Before you can start using Github Actions to deploy your container to Google Cloud Run, you need to allow your Github repository access to your GCP project.
+
+### Github Workload Identity Federation
+
+To allow your Github repository to access your GCP project, you need to setup [Github Workload Identity Federation](https://cloud.google.com/blog/products/identity-security/enabling-keyless-authentication-from-github-actions). To make this as easy as possible, we created a small [Terraform module](https://github.com/helmless/google-workload-identity-federation-terraform-module) that can be used to setup the necessary resources in your GCP project.
+
+Deploy it however you deploy your :simple-terraform: infrastructure and make sure to update the `github_organization` variable to match your Github organization.
+
+```hcl title="workload-identity.tf"
+--8<-- "https://raw.githubusercontent.com/helmless/google-workload-identity-federation-terraform-module/refs/heads/main/example/main.tf"
+```
+
+Applying this module you will get:
+<div class="annotate" markdown>
+- a workload identity pool (1)
+- a workload identity provider for your Github repository (2)
+    - that only allows repositories in your Github organization to authenticate with the workload identity pool
+</div>
+
+1. A workload identity pool is a container for your workload identities. It uses the [`google_iam_workload_identity_pool` Terraform resource](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_workload_identity_pool).
+2. A workload identity provider is a reference to the Github OIDC identity provider. It uses the [`google_iam_workload_identity_pool_provider` Terraform resource](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_workload_identity_pool_provider) and is scoped to only allow tokens issued by Github and from repositories in your specified organization.
+
+
+### Grant the Github Repository the necessary permissions
+
+After setting up the workload identity federation, you need to grant the Github repository the necessary permissions to access your GCP project. You do this by giving the `principalSet` scoped to the repository the `roles/iam.workloadIdentityUser` role on the GCP projects default service account that is used by Cloud Run. And it will need `roles/run.admin` permissions on the Cloud Run project where you want to deploy your container.
+<div class="annotate" markdown>
+!!! warning "Important"
+
+    These permissions are quick start permissions to get you up and running quickly. In production you should scope those permissions to the individual resources you want to deploy and give each Cloud Run service its own service account. (1)
+</div>
+1.   See the [advanced deployment guide](./advanced.md) for more information.
+
+```hcl title="iam.tf"
+locals {
+    repositories = ["your-repository"]
+    # This prefixes all repositories with the correct `principalSet` and attribute mapping.
+    repository_principals = { for repository in local.repositories : repository => "${module.github_federation.repository_principal_set_id_prefix}/${repository}" }
+}
+
+data "google_project" "project" {}
+
+# This grants the `principalSet` the `roles/run.admin` role on the GCP project.
+resource "google_project_iam_member" "project" { (2)
+  for_each = local.repository_principals
+  project  = data.google_project.project.project_id
+  role     = "roles/run.admin"
+  member   = each.value
+}
+
+# This grants the `principalSet` the `roles/iam.serviceAccountUser` role on the GCP projects default service account.
+resource "google_service_account_iam_member" "cloud_run_v2" { (3)
+  for_each = local.repository_principals
+
+  service_account_id = "projects/${data.google_project.project.project_id}/serviceAccounts/${data.google_project.project.number}-compute@developer.gserviceaccount.com"
+  role               = "roles/iam.serviceAccountUser"
+  member             = each.value
+}
+```
+
+Now run the following command to get the `GCP_WORKLOAD_IDENTITY_POOL`:
+
+```sh
+gcloud iam workload-identity-pools providers list --location=global --workload-identity-pool=github
+```
+
+This should return something like this which you will need to set as a Github secret in your repository.
+
+```
+projects/YOUR_PROJECT_ID/locations/global/workloadIdentityPools/github/providers/github-oidc
+```
+
+!!! success "Success"
+    You have now setup the necessary resources to allow your Github repository to access your GCP project and to deploy your container to Google Cloud Run.
+
 ## Github Actions
 
 Helmless provides a custom [Github Action][github-action] that you can use in your workflow to deploy your container to Google Cloud Run. But before you can use it you need to setup the correct permissions for the Github Action to access your Google Cloud Run project.
