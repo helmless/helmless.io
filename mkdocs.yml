@@ -6,16 +6,14 @@ edit_uri: edit/main/docs/
 nav:
   - Home: index.md
   - What is Helmless?:
-      - about/index.md
-      - Architecture: about/architecture.md
-  - Documentation:
-      - index.md
-      - What is Helmless?: about/index.md
-      - Architecture: about/architecture.md
-      - Google CloudRun:
-          - Getting Started: cloudrun/getting-started.md
-          - CI/CD: cloudrun/ci-cd.md
-          - Examples: cloudrun/examples.md
+      - what-is-helmless.md
+      - Architecture: architecture.md
+  - Getting Started: getting-started.md
+  - Google CloudRun:
+      - cloudrun/index.md
+      - Getting Started: cloudrun/getting-started.md
+      - CI/CD: cloudrun/ci-cd.md
+      - Examples: cloudrun/examples.md
 theme:
   name: material
   custom_dir: overrides/
@@ -46,7 +44,7 @@ theme:
     - navigation.prune
     - navigation.sections
     - navigation.tabs
-    # - navigation.tabs.sticky
+    - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
     - search.highlight
