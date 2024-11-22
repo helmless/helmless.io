@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const featureContent = document.querySelector('.feature-content');
+  const featureCards = document.querySelector('.feature-cards');
   
-  // Create intersection observer for feature content
+  // Create intersection observer for feature cards
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -12,9 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }, {
     threshold: 0.3, // Trigger when 30% of the element is visible
-    rootMargin: '-100px' // Adjust when the animation triggers
+    rootMargin: '-50px' // Adjust when the animation triggers
   });
 
-  // Start observing the feature content
-  observer.observe(featureContent);
+  // Start observing the feature cards
+  if (featureCards) {
+    observer.observe(featureCards);
+  }
 });

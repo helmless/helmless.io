@@ -16,10 +16,11 @@
       <div class="tx-hero__content">
         <h1>
           <span class="gradient-text">Serverless Helm</span><br />
-          deployments without <br />
-          Kubernetes or Terraform.
+          <span class="auto-contrast-text">deployments without</span><br />
+          <span class="auto-contrast-text">Kubernetes or</span><br />
+          <span class="auto-contrast-text">Terraform.</span>
         </h1>
-        <p>
+        <p class="auto-contrast-text">
           Deploy serverless containers with Helm's simplicity,<br />
           bypassing the overhead of Kubernetes and Terraform.
         </p>
@@ -42,7 +43,7 @@
   </div>
 
   <!-- Move peek container inside tx-container -->
-  <div class="peek-container">
+  <!-- <div class="peek-container">
     <div class="peek-image">
       <img
         src="{{ 'assets/images/values_example.svg' | url }}"
@@ -50,24 +51,32 @@
       />
     </div>
   </div>
-</section>
+</section> -->
 
-<!-- Simplified feature section -->
-<section class="feature-container">
-  <div class="md-grid md-typeset">
-    <div class="feature-grid">
-      <h2 class="feature-heading">
-        <span class="gradient-text">Kubernetes-like DX</span><br />
-        without the Complexity
-      </h2>
-      <div class="feature-content">
-        <!-- Main text content -->
-        <div class="feature-text">
-          <p>
-            Deploy serverless containers using familiar Helm syntax and GitOps
-            workflows, bypassing the overhead of Kubernetes and verbosity of
-            Terraform.
-          </p>
+  <!-- Simplified feature section -->
+  <section class="feature-container">
+    <div class="md-grid md-typeset">
+      <div class="feature-grid">
+        <div class="feature-top-content">
+          <!-- Title and text content -->
+          <div class="feature-text-content">
+            <h2 class="feature-heading">
+              <span class="gradient-text">Kubernetes-like DX</span><br />
+              without the Complexity
+            </h2>
+            <p>
+              Deploy serverless containers using familiar Helm syntax and GitOps
+              workflows, bypassing the overhead of Kubernetes and verbosity of
+              Terraform.
+            </p>
+          </div>
+          <!-- Code example -->
+          <div class="feature-image">
+            <img
+              src="{{ 'assets/images/values_minimal_example.svg' | url }}"
+              alt="Helm Values Example"
+            />
+          </div>
         </div>
 
         <!-- Full-width feature cards -->
@@ -103,114 +112,114 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Workflow feature section -->
-<section class="workflow-container">
-  <div class="workflow-content">
-    <h2 class="workflow-heading">
-      <span class="gradient-text">Simple Deployment Flow</span><br />
-      From Values to Production
-    </h2>
-    <div class="workflow-steps">
-      <div class="workflow-step">
-        <div class="workflow-icon">
-          <img
-            src="{{ 'assets/images/yaml-icon.svg' | url }}"
-            alt="Values YAML"
-          />
-        </div>
-        <h3>values.yaml</h3>
-        <p>Define your deployment configuration</p>
-      </div>
-      <div class="workflow-arrow">→</div>
-      <div class="workflow-step">
-        <div class="workflow-icon">
-          <img
-            src="{{ 'assets/images/cicd-icon.svg' | url }}"
-            alt="CI/CD Pipeline"
-          />
-        </div>
-        <h3>CI/CD Pipeline</h3>
-        <p>Automated deployment process</p>
-      </div>
-      <div class="workflow-arrow">→</div>
-      <div class="workflow-step">
-        <div class="workflow-icon">
-          <img
-            src="{{ 'assets/images/cloud-icon.svg' | url }}"
-            alt="Cloud CLI"
-          />
-        </div>
-        <h3>Cloud CLI</h3>
-        <p>Direct cloud provider integration</p>
-      </div>
-      <div class="workflow-arrow">→</div>
-      <div class="workflow-step">
-        <div class="workflow-icon">
-          <img
-            src="{{ 'assets/images/container-icon.svg' | url }}"
-            alt="Running Container"
-          />
-        </div>
-        <h3>Container</h3>
-        <p>Your application running in production</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Final CTA section -->
-<section class="final-cta-container">
-  <div class="md-grid md-typeset">
-    <div class="final-cta-content">
-      <h2 class="final-cta-heading">
-        <span class="gradient-text">Ready to Simplify</span><br />
-        Your Cloud Deployments?
+  <!-- Workflow feature section -->
+  <section class="workflow-container">
+    <div class="workflow-content">
+      <h2 class="workflow-heading">
+        <span class="gradient-text">Simple Deployment Flow</span><br />
+        From Values to Production
       </h2>
-
-      <!-- Stats/proof points -->
-      <div class="proof-points">
-        <div class="proof-point">
-          <span class="proof-number">80%</span>
-          <span class="proof-label">Less Configuration</span>
+      <div class="workflow-steps">
+        <div class="workflow-step">
+          <div class="workflow-icon">
+            <img
+              src="{{ 'assets/images/yaml-icon.svg' | url }}"
+              alt="Values YAML"
+            />
+          </div>
+          <h3>values.yaml</h3>
+          <p>Define your deployment configuration</p>
         </div>
-        <div class="proof-point">
-          <span class="proof-number">5min</span>
-          <span class="proof-label">Setup Time</span>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="workflow-icon">
+            <img
+              src="{{ 'assets/images/cicd-icon.svg' | url }}"
+              alt="CI/CD Pipeline"
+            />
+          </div>
+          <h3>CI/CD Pipeline</h3>
+          <p>Automated deployment process</p>
         </div>
-        <div class="proof-point">
-          <span class="proof-number">100%</span>
-          <span class="proof-label">Cloud Native</span>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="workflow-icon">
+            <img
+              src="{{ 'assets/images/cloud-icon.svg' | url }}"
+              alt="Cloud CLI"
+            />
+          </div>
+          <h3>Cloud CLI</h3>
+          <p>Direct cloud provider integration</p>
         </div>
-      </div>
-
-      <div class="final-cta-buttons">
-        <a
-          href="./cloudrun/getting-started"
-          class="md-button md-button--primary"
-        >
-          Start Deploying Now
-        </a>
-        <a
-          href="https://github.com/helmless/helmless"
-          class="md-button md-button--secondary"
-        >
-          <span class="github-icon"
-            >{% include ".icons/fontawesome/brands/github.svg" %}</span
-          >
-          Star on GitHub
-        </a>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="workflow-icon">
+            <img
+              src="{{ 'assets/images/container-icon.svg' | url }}"
+              alt="Running Container"
+            />
+          </div>
+          <h3>Container</h3>
+          <p>Your application running in production</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Final CTA section -->
+  <section class="final-cta-container">
+    <div class="md-grid md-typeset">
+      <div class="final-cta-content">
+        <h2 class="final-cta-heading">
+          <span class="gradient-text">Ready to Simplify</span><br />
+          Your Cloud Deployments?
+        </h2>
+
+        <!-- Stats/proof points -->
+        <div class="proof-points">
+          <div class="proof-point">
+            <span class="proof-number">80%</span>
+            <span class="proof-label">Less Configuration</span>
+          </div>
+          <div class="proof-point">
+            <span class="proof-number">5min</span>
+            <span class="proof-label">Setup Time</span>
+          </div>
+          <div class="proof-point">
+            <span class="proof-number">100%</span>
+            <span class="proof-label">Cloud Native</span>
+          </div>
+        </div>
+
+        <div class="final-cta-buttons">
+          <a
+            href="./cloudrun/getting-started"
+            class="md-button md-button--primary"
+          >
+            Start Deploying Now
+          </a>
+          <a
+            href="https://github.com/helmless/helmless"
+            class="md-button md-button--secondary"
+          >
+            <span class="github-icon"
+              >{% include ".icons/fontawesome/brands/github.svg" %}</span
+            >
+            Star on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}
+
+  <!-- Content -->
+  {% block content %}{% endblock %}
+
+  <!-- Footer -->
+  {% block footer %}{{ super() }}{% endblock %}
 </section>
-
-{% endblock %}
-
-<!-- Content -->
-{% block content %}{% endblock %}
-
-<!-- Footer -->
-{% block footer %}{{ super() }}{% endblock %}
