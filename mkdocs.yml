@@ -9,22 +9,29 @@ nav:
       - what-is-helmless.md
       - Architecture: architecture.md
   - Documentation:
-      # - docs/index.md
+      - docs/index.md
       - Google CloudRun:
-          - docs/cloudrun/getting-started.md
+          - docs/cloudrun/index.md
+          - Getting Started: docs/cloudrun/getting-started.md
           - CI/CD: docs/cloudrun/ci-cd.md
-          - Advanced: docs/cloudrun/advanced.md
           - Examples: docs/cloudrun/examples.md
+          - Advanced Infrastructure: docs/cloudrun/advanced.md
+          - Chart Schema: docs/cloudrun/schema/values.md
 plugins:
   - privacy
   - search
   - minify:
       minify_html: true
   - multirepo:
-      cleanup: true
+      cleanup: false
+      keep_docs_dir: false
+      nav_repos:
+        - name: docs
+          import_url: 'https://github.com/helmless/google-cloudrun-chart?branch=main'
+          imports: ['cloudrun/schema/*.md']
+
   - redirects:
       redirect_maps:
-        'docs/cloudrun/index.md': 'docs/cloudrun/getting-started.md'
         'cloudrun/index.md': 'docs/cloudrun/getting-started.md'
         'cloudrun/getting-started/index.md': 'docs/cloudrun/getting-started.md'
         'getting-started/index.md': 'docs/cloudrun/getting-started.md'
