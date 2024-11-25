@@ -1,0 +1,9 @@
+suite: Cloud Run Job > Snapshot Tests
+templates:
+  - cloudrun.yaml
+set:
+  type: job
+tests:
+  - it: should render default manifest without errors
+    asserts:
+      - matchSnapshot: {}

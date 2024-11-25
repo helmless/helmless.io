@@ -1,0 +1,75 @@
+name: 🧪 E2E Tests
+
+env:
+  DRY_RUN: false
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+jobs:
+  discover:
+    name: 🔍 Discover Services
+    runs-on: ubuntu-latest
+    outputs:
+      services: ${{ steps.set-matrix.outputs.services }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: set-matrix
+        shell: bash
+        run: |
+          SERVICES=$(ls -d charts/cloudrun/service/e2e/*/ | jq -R -s -c 'split("\n")[:-1]')
+          echo "services=$SERVICES" >> $GITHUB_OUTPUT
+
+  e2e:
+    name: 🚀 ${{ matrix.service }}
+    needs: discover
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    environment: e2e
+    concurrency:
+      group: ${{ matrix.service }}
+    strategy:
+      matrix:
+        service: ${{ fromJson(needs.discover.outputs.services) }}
+      fail-fast: false
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🔑 Google Auth
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_POOL }}
+
+      - name: 📜 Template Helmless Chart
+        uses: helmless/action@main
+        with:
+          files: ${{ matrix.service }}/values.yaml
+          chart: ./charts/cloudrun/service
+
+      - name: 🚀 Deploy Service
+        uses: helmless/google-cloudrun-deploy-action@main
+        id: deploy
+        with:
+          gcp_project: ${{ secrets.GCP_PROJECT_ID }}
+          dry_run: ${{ env.DRY_RUN }}
+
+      - name: 💣 Cleanup Service
+        if: always() && ${{ env.DRY_RUN == 'false' }}
+        shell: bash
+        run: |
+          # Extract service name from values.yaml
+          SERVICE_NAME=$(yq eval '.name' ${{ matrix.service }}/values.yaml)
+
+          echo "Deleting service: $SERVICE_NAME in region: $REGION"
+          gcloud run services delete $SERVICE_NAME \
+            --project=${{ secrets.GCP_PROJECT_ID }} \
+            --region=${{ steps.deploy.outputs.region }} \
+            --quiet

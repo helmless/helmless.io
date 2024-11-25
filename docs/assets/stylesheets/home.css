@@ -160,7 +160,7 @@ body {
   border-radius: 16px;
   padding: 3rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
+  box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
   display: block;
@@ -485,7 +485,7 @@ body {
   padding: 6rem 2rem;
   background: var(--slate-gray);
   position: relative;
-  box-shadow: 
+  box-shadow:
     inset 0 15px 15px -10px rgba(0, 0, 0, 0.3),
     inset 0 -15px 15px -10px rgba(0, 0, 0, 0.3);
 }
@@ -780,7 +780,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 2rem;
   }
-  
+
   .site-footer {
     padding: 3rem 1rem 1.5rem;
   }
@@ -796,4 +796,3 @@ body {
   visibility: visible !important;
   transform: none !important;
 }
-

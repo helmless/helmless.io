@@ -37,7 +37,7 @@ plugins:
         'getting-started/index.md': 'docs/cloudrun/getting-started.md'
 theme:
   name: material
-  custom_dir: overrides/
+  custom_dir: docs/_overrides/
   palette:
     scheme: slate
     primary: custom

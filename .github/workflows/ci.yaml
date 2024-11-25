@@ -1,0 +1,47 @@
+name: 🔍 CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: 🧹 Lint & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Helm
+        uses: azure/setup-helm@v4
+
+      - name: 🧪 Run Helm Lint
+        run: helm lint .
+
+      - name: 📦 Test Helm Package
+        run: helm package . --debug
+
+      - name: 🔍 Verify Chart Schema
+        run: helm template .
+  formatting:
+    name: 🎨 Code Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Helm
+        uses: azure/setup-helm@v4
+
+      - name: 📦 Install Helm Schema Plugin
+        run: helm plugin install https://github.com/losisin/helm-values-schema-json.git
+
+      - name: ⚙️ Setup pre-commit
+        uses: pre-commit/action@v3.0.1
+
+      - name: 🔍 Run Format Checks
+        run: pre-commit run --all-files
