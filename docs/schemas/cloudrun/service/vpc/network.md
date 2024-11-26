@@ -1,0 +1,3 @@
+## network Type
+
+`string`

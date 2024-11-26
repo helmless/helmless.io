@@ -1,0 +1,3 @@
+## memory Type
+
+`string`

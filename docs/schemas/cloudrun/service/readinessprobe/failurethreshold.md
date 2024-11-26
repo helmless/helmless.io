@@ -1,0 +1,3 @@
+## failureThreshold Type
+
+`integer`

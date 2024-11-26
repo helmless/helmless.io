@@ -1,0 +1,3 @@
+## serviceAccountName Type
+
+`string`

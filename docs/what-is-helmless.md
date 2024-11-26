@@ -1,7 +1,8 @@
 ---
 title: What is Helmless?
 description: Learn the core concepts and understand how Helmless simplifies serverless deployments.
-
+hide:
+  - navigation
 ---
 
 # What is Helmless?

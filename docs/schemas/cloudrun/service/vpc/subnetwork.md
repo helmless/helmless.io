@@ -1,0 +1,3 @@
+## subnetwork Type
+
+`string`

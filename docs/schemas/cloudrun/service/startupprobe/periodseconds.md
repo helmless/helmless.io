@@ -1,0 +1,3 @@
+## periodSeconds Type
+
+`integer`

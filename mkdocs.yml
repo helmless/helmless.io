@@ -16,19 +16,26 @@ nav:
           - CI/CD: docs/cloudrun/ci-cd.md
           - Examples: docs/cloudrun/examples.md
           - Advanced Infrastructure: docs/cloudrun/advanced.md
-          - Chart Schema: docs/cloudrun/schema/values.md
+  - Helmless Chart Schemas: schemas/
 plugins:
   - privacy
   - search
   - minify:
       minify_html: true
-  - multirepo:
-      cleanup: false
-      keep_docs_dir: false
-      nav_repos:
-        - name: docs
-          import_url: 'https://github.com/helmless/google-cloudrun-chart?branch=main'
-          imports: ['cloudrun/schema/*.md']
+  - awesome-pages:
+      filename: .pages
+      collapse_single_pages: true
+      strict: false
+      order: asc
+      sort_type: natural
+      order_by: title
+  # - multirepo:
+  #     cleanup: false
+  #     keep_docs_dir: false
+  #     nav_repos:
+  #       - name: docs
+  #         import_url: 'https://github.com/helmless/google-cloudrun-chart?branch=main'
+  #         imports: ['cloudrun/schema/*.md']
 
   - redirects:
       redirect_maps:
@@ -153,3 +160,4 @@ markdown_extensions:
   - pymdownx.tilde
 extra_css:
   - assets/stylesheets/extra.css
+  - assets/stylesheets/social.css

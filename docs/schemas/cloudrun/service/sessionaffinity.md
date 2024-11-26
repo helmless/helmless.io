@@ -1,0 +1,3 @@
+## sessionAffinity Type
+
+`boolean`

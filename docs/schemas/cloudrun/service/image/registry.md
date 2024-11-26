@@ -1,0 +1,3 @@
+## registry Type
+
+`string`

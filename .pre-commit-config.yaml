@@ -12,10 +12,10 @@ repos:
     hooks:
       - id: helmlint
 
-#  - repo: local
-#    hooks:
-#      - id: schema-docs
-#        name: Generate schema documentation
-#        entry: bash ./scripts/generate-schema-docs.sh
-#        language: system
-#        files: ^values.schema.json$
+  - repo: local
+    hooks:
+      - id: schema-docs
+        name: Generate schema documentation
+        entry: bash ./scripts/generate-schema-docs.sh
+        language: system
+        files: ^charts/.*/values\.schema\.json$
